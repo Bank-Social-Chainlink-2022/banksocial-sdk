@@ -1,11 +1,15 @@
 import * as React from 'react'
 
+import { useBankSocial } from 'wagmi-banksocial'
+
 import { Account, Connect, NetworkSwitcher } from '../components'
 import { useIsMounted } from '../hooks'
-// import {} from 'wagmi-banksocial'
 
 const Page = () => {
   const isMounted = useIsMounted()
+  const { data } = useBankSocial({
+    addressOrName: 'awkweb.eth',
+  })
 
   if (!isMounted) return null
   return (
@@ -13,6 +17,10 @@ const Page = () => {
       <Connect />
       <Account />
       <NetworkSwitcher />
+      <p>BankScial</p>
+      <div>
+        Balance: {data?.formatted} {data?.symbol}
+      </div>
     </>
   )
 }
