@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Address, useToken } from 'wagmi'
+import { Address, useToken } from 'wagmi-banksocial'
 
 export const Token = () => {
   const [address, setAddress] = useState<Address>(

@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers'
-import { useContractReads } from 'wagmi'
+import { useContractReads } from 'wagmi-banksocial'
 
 export const wagmigotchiContractConfig = {
   address: '0xecb504d39723b0be0e3a9aa33d646642d1051ee1',

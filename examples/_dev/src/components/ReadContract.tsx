@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Address, useContractRead } from 'wagmi'
+import { Address, useContractRead } from 'wagmi-banksocial'
 
 import { wagmigotchiAbi } from './wagmigotchi-abi'
 

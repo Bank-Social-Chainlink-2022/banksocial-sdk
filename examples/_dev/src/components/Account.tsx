@@ -1,5 +1,10 @@
 import * as React from 'react'
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
+import {
+  useAccount,
+  useDisconnect,
+  useEnsAvatar,
+  useEnsName,
+} from 'wagmi-banksocial'
 
 import { useIsMounted } from '../hooks'
 import { Balance } from './Balance'

@@ -1,4 +1,4 @@
 {
-  "main": "dist/wagmi-connectors-metaMask.cjs.js",
-  "module": "dist/wagmi-connectors-metaMask.esm.js"
+  "main": "dist/wagmi-banksocial-connectors-metaMask.cjs.js",
+  "module": "dist/wagmi-banksocial-connectors-metaMask.esm.js"
 }

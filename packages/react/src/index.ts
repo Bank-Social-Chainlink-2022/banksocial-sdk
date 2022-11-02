@@ -39,6 +39,7 @@ export {
   useTransaction,
   useWaitForTransaction,
   useWebSocketProvider,
+  useBankSocial,
 } from './hooks'
 
 export { deserialize, serialize } from './utils'

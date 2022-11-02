@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers'
-import { usePrepareSendTransaction, useSendTransaction } from 'wagmi'
+import { usePrepareSendTransaction, useSendTransaction } from 'wagmi-banksocial'
 
 export const SendTransactionPrepared = () => {
   const { config } = usePrepareSendTransaction({

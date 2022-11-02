@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAccount, useBalance } from 'wagmi'
+import { useAccount, useBalance } from 'wagmi-banksocial'
 
 export const Balance = () => {
   return (

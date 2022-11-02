@@ -1,4 +1,4 @@
 {
-  "main": "dist/wagmi-connectors-injected.cjs.js",
-  "module": "dist/wagmi-connectors-injected.esm.js"
+  "main": "dist/wagmi-banksocial-connectors-injected.cjs.js",
+  "module": "dist/wagmi-banksocial-connectors-injected.esm.js"
 }

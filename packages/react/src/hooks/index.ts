@@ -43,3 +43,5 @@ export {
   useMutation,
   useQueryClient,
 } from './utils'
+
+export { useBankSocial } from './banksocial'

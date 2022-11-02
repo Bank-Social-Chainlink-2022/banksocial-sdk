@@ -8,17 +8,17 @@ import {
   configureChains,
   createClient,
   defaultChains,
-} from 'wagmi'
+} from 'wagmi-banksocial'
 
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
-import { InjectedConnector } from 'wagmi/connectors/injected'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
+import { CoinbaseWalletConnector } from 'wagmi-banksocial/connectors/coinbaseWallet'
+import { InjectedConnector } from 'wagmi-banksocial/connectors/injected'
+import { MetaMaskConnector } from 'wagmi-banksocial/connectors/metaMask'
+import { WalletConnectConnector } from 'wagmi-banksocial/connectors/walletConnect'
 
-import { alchemyProvider } from 'wagmi/providers/alchemy'
-import { infuraProvider } from 'wagmi/providers/infura'
-import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
-import { publicProvider } from 'wagmi/providers/public'
+import { alchemyProvider } from 'wagmi-banksocial/providers/alchemy'
+import { infuraProvider } from 'wagmi-banksocial/providers/infura'
+import { jsonRpcProvider } from 'wagmi-banksocial/providers/jsonRpc'
+import { publicProvider } from 'wagmi-banksocial/providers/public'
 
 const avalanche: Chain = {
   id: 43_114,
@@ -72,7 +72,7 @@ const client = createClient({
     new CoinbaseWalletConnector({
       chains,
       options: {
-        appName: 'wagmi',
+        appName: 'wagmi-banksocial',
       },
     }),
     new WalletConnectConnector({

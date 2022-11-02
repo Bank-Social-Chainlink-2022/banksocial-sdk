@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers'
-import { useContractWrite, usePrepareContractWrite } from 'wagmi'
+import { useContractWrite, usePrepareContractWrite } from 'wagmi-banksocial'
 
 import { anvAbi } from './anv-abi'
 

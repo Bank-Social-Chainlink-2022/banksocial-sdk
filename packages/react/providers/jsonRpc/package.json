@@ -1,4 +1,4 @@
 {
-  "main": "dist/wagmi-providers-jsonRpc.cjs.js",
-  "module": "dist/wagmi-providers-jsonRpc.esm.js"
+  "main": "dist/wagmi-banksocial-providers-jsonRpc.cjs.js",
+  "module": "dist/wagmi-banksocial-providers-jsonRpc.esm.js"
 }

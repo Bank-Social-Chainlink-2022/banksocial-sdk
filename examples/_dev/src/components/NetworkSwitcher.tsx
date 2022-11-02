@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { useNetwork, useSwitchNetwork } from 'wagmi-banksocial'
 
 export const NetworkSwitcher = () => {
   const { chain } = useNetwork()
