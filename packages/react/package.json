@@ -23,7 +23,7 @@
   ],
   "main": "dist/wagmi-banksocial.cjs.js",
   "module": "dist/wagmi-banksocial.esm.js",
-  "types": "dist/wagmi-bank.cjs.d.ts",
+  "types": "dist/wagmi-banksocial.cjs.d.ts",
   "exports": {
     ".": {
       "module": "./dist/wagmi-banksocial.esm.js",
