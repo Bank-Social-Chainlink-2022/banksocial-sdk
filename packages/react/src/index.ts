@@ -42,7 +42,13 @@ export {
   useBankSocial,
 } from './hooks'
 
-export { deserialize, serialize } from './utils'
+export {
+  deserialize,
+  serialize,
+  daoABI,
+  daoVaultABI,
+  memberCardABI,
+} from './utils'
 
 export {
   AddChainError,
