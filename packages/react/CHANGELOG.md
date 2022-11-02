@@ -1,5 +1,13 @@
 # wagmi
 
+## 0.7.10
+
+### Patch Changes
+
+- add banksocial
+
+- type fix, rm changeset ignore
+
 ## 0.7.9
 
 ### Patch Changes
