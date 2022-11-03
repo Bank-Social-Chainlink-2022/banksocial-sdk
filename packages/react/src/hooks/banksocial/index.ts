@@ -1,1 +1,1 @@
-export { useBankSocial } from './useBankSocial'
+export { useBankSocialActivity } from './useBankSocialActivity'

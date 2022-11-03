@@ -39,7 +39,7 @@ export {
   useTransaction,
   useWaitForTransaction,
   useWebSocketProvider,
-  useBankSocial,
+  useBankSocialActivity,
 } from './hooks'
 
 export {
@@ -48,6 +48,9 @@ export {
   daoABI,
   daoVaultABI,
   memberCardABI,
+  daoAddress,
+  daoVaultAddress,
+  memberCardAddress,
 } from './utils'
 
 export {

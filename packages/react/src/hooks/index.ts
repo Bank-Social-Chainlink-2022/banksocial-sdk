@@ -44,4 +44,4 @@ export {
   useQueryClient,
 } from './utils'
 
-export { useBankSocial } from './banksocial'
+export { useBankSocialActivity } from './banksocial'
