@@ -1,38 +1,5 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wagmi-dev/.github/main/content/logo-dark.svg">
-    <img alt="wagmi logo" src="https://raw.githubusercontent.com/wagmi-dev/.github/main/content/logo-light.svg" width="auto" height="60">
-  </picture>
-</p>
-
-<p align="center">
-  React Hooks for Ethereum
-<p>
-
-<div align="center">
-  <a href="https://www.npmjs.com/package/wagmi">
-    <img src="https://img.shields.io/npm/v/wagmi?colorA=21262d&colorB=161b22&style=flat" alt="Version">
-  </a>
-  <a href="https://www.npmjs.com/package/wagmi">
-    <img src="https://img.shields.io/npm/dm/wagmi?colorA=21262d&colorB=161b22&style=flat" alt="Downloads per month">
-  </a>
-  <a href="https://bestofjs.org/projects/wagmi">
-    <img src="https://img.shields.io/endpoint?colorA=21262d&colorB=161b22&style=flat&url=https://bestofjs-serverless.now.sh/api/project-badge?fullName=wagmi-dev%2Fwagmi%26since=daily" alt="Best of JS">
-  </a>
-</div>
-
-<br>
-
-## Features
-
-- 🚀 20+ hooks for working with wallets, ENS, contracts, transactions, signing, etc.
-- 💼 Built-in wallet connectors for MetaMask, WalletConnect, Coinbase Wallet, and Injected
-- 👟 Caching, request deduplication, multicall, batching, and persistence
-- 🌀 Auto-refresh data on wallet, block, and network changes
-- 🦄 TypeScript ready (infer types from ABIs and EIP-712 Typed Data)
-- 🌳 Test suite running against forked Ethereum network
-
-...and a lot more.
+# SDK
+hooks to fetch and interact with bank-social smart contracts
 
 ## Documentation
 
@@ -43,15 +10,15 @@ For full documentation and examples, visit [wagmi.sh](https://wagmi.sh).
 Install wagmi and its ethers peer dependency.
 
 ```bash
-npm install wagmi ethers
+npm install wagmi-banksocial ethers
 ```
 
 ## Quick Start
 
-Connect a wallet in under 60 seconds. LFG.
+### Getting started
 
-```tsx
-import { WagmiConfig, createClient } from 'wagmi'
+```jsx
+import { WagmiConfig, createClient } from 'wagmi-banksocial'
 import { getDefaultProvider } from 'ethers'
 
 const client = createClient({
@@ -68,33 +35,54 @@ function App() {
 }
 ```
 
-```tsx
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
-import { InjectedConnector } from 'wagmi/connectors/injected'
+#### Install
 
-function Profile() {
-  const { address } = useAccount()
-  const { connect } = useConnect({
-    connector: new InjectedConnector(),
-  })
-  const { disconnect } = useDisconnect()
-
-  if (address)
-    return (
-      <div>
-        Connected to {address}
-        <button onClick={() => disconnect()}>Disconnect</button>
-      </div>
-    )
-  return <button onClick={() => connect()}>Connect Wallet</button>
-}
+```bash
+npm install wagmi-banksocial ethers
 ```
 
-In this example, we create a wagmi `Client` and pass it to the `WagmiConfig` React Context. The client is set up to use the ethers Default Provider and automatically connect to previously connected wallets.
+#### Import
 
-Next, we use the `useConnect` hook to connect an injected wallet (e.g. MetaMask) to the app. Finally, we show the connected account's address with `useAccount` and allow them to disconnect with `useDisconnect`.
+```js
+import {
+  memberCardABI,
+  memberCardAddress,
+  useBankSocialActivity,
+} from 'wagmi-banksocial'
+```
 
-We've only scratched the surface for what you can do with wagmi!
+#### Initiate hook
+
+```js
+  const API_URL = "Get Mumbai RPC URL from Infura, Alchemy or Quicknode"
+  const { activities } = useBankSocialActivity({
+    API_URL: API_URL,
+    contractAddress: memberCardAddress,
+    contractABI: memberCardABI,
+  })
+```
+
+#### Use
+
+```jsx
+
+<h2>Vault Activities</h2>;
+{
+  activities &&
+    activities.map((activity, i) => (
+      <div key={i}>
+        {activity.eventName === "RoleGranted" && (
+          <div className="text-white">
+            <p>Account: {activity.data.account}</p>
+            <p>Role: {activity.data.role}</p>
+            <p>Sender: {activity.data.sender}</p>
+          </div>
+        )}
+      </div>
+    ));
+}
+
+```
 
 —
 
