@@ -1,5 +1,17 @@
 # wagmi
 
+## 0.7.12
+
+### Patch Changes
+
+- test
+
+## 0.7.11
+
+### Patch Changes
+
+- event activites
+
 ## 0.7.10
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "example-dev",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,7 +13,7 @@
     "next": "^12.2.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "wagmi-banksocial": "^0.7.10"
+    "wagmi-banksocial": "^0.7.12"
   },
   "devDependencies": {
     "@preconstruct/next": "^4.0.0",
