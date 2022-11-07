@@ -231,7 +231,7 @@ export const socialBankABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 export const daoABI = [
   {
@@ -537,7 +537,7 @@ export const daoABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 export const daoVaultABI = [
   {
@@ -1018,7 +1018,7 @@ export const daoVaultABI = [
     type: 'function',
   },
   { stateMutability: 'payable', type: 'receive' },
-]
+] as const
 
 export const memberCardABI = [
   {
@@ -1497,4 +1497,4 @@ export const memberCardABI = [
     stateMutability: 'nonpayable',
     type: 'function',
   },
-]
+] as const
