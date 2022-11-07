@@ -1,3 +1,238 @@
+export const socialBankABI = [
+  {
+    inputs: [
+      { internalType: 'address', name: '_memberCardFactory', type: 'address' },
+      { internalType: 'address', name: '_dAOVaultFactory', type: 'address' },
+      { internalType: 'address', name: '_daoFactory', type: 'address' },
+    ],
+    stateMutability: 'nonpayable',
+    type: 'constructor',
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'DAOAddress',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'NFTAddress',
+        type: 'address',
+      },
+      {
+        indexed: true,
+        internalType: 'address',
+        name: 'poolAddress',
+        type: 'address',
+      },
+      {
+        indexed: false,
+        internalType: 'string',
+        name: 'bankName',
+        type: 'string',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'maxSupply',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'minStake',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: 'daoId',
+        type: 'uint256',
+      },
+    ],
+    name: 'SocialBankCreated',
+    type: 'event',
+  },
+  {
+    inputs: [],
+    name: 'OWNER',
+    outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'bankOwnerAddress',
+    outputs: [
+      {
+        internalType: 'contract MemberCard',
+        name: 'nftAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'contract DAOVault',
+        name: 'poolAddress',
+        type: 'address',
+      },
+      { internalType: 'contract DAO', name: 'daoAddress', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { internalType: 'string', name: '_name', type: 'string' },
+      { internalType: 'string', name: '_initBaseURI', type: 'string' },
+      { internalType: 'address', name: '_tokenAddress', type: 'address' },
+      { internalType: 'address', name: '_aTokenAddress', type: 'address' },
+      {
+        internalType: 'address',
+        name: '_aaveLendingPoolAddressesProvider',
+        type: 'address',
+      },
+      { internalType: 'address', name: '_swap', type: 'address' },
+      { internalType: 'uint256', name: '_maxSupply', type: 'uint256' },
+      { internalType: 'uint256', name: '_minStake', type: 'uint256' },
+    ],
+    name: 'createDAO',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'dAOVaultFactory',
+    outputs: [
+      { internalType: 'contract DAOVaultFactory', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'daoCounter',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'daoFactory',
+    outputs: [
+      { internalType: 'contract DAOFactory', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '_address', type: 'address' }],
+    name: 'getDAOByAddress',
+    outputs: [{ internalType: 'contract DAO', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+    name: 'getDAOById',
+    outputs: [{ internalType: 'contract DAO', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '_address', type: 'address' }],
+    name: 'getDAOsByAddress',
+    outputs: [
+      { internalType: 'contract DAO', name: '', type: 'address' },
+      { internalType: 'contract DAOVault', name: '', type: 'address' },
+      { internalType: 'contract MemberCard', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+    name: 'getDAOsById',
+    outputs: [
+      { internalType: 'contract DAO', name: '', type: 'address' },
+      { internalType: 'contract DAOVault', name: '', type: 'address' },
+      { internalType: 'contract MemberCard', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '_address', type: 'address' }],
+    name: 'getNFTByAddress',
+    outputs: [
+      { internalType: 'contract MemberCard', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+    name: 'getNFTById',
+    outputs: [
+      { internalType: 'contract MemberCard', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '_address', type: 'address' }],
+    name: 'getVaultByAddress',
+    outputs: [{ internalType: 'contract DAOVault', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: 'id', type: 'uint256' }],
+    name: 'getVaultById',
+    outputs: [{ internalType: 'contract DAOVault', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'memberCardFactory',
+    outputs: [
+      { internalType: 'contract MemberCardFactory', name: '', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'address', name: '', type: 'address' }],
+    name: 'recordedAddress',
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    name: 'socialBankId',
+    outputs: [
+      {
+        internalType: 'contract MemberCard',
+        name: 'nftAddress',
+        type: 'address',
+      },
+      {
+        internalType: 'contract DAOVault',
+        name: 'poolAddress',
+        type: 'address',
+      },
+      { internalType: 'contract DAO', name: 'daoAddress', type: 'address' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
+
 export const daoABI = [
   {
     inputs: [
@@ -42,9 +277,15 @@ export const daoABI = [
       },
       {
         indexed: false,
-        internalType: 'string',
-        name: '_tokenSelection',
-        type: 'string',
+        internalType: 'bool',
+        name: '_tokenSwap',
+        type: 'bool',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256',
       },
     ],
     name: 'ProposalCreated',
@@ -67,6 +308,12 @@ export const daoABI = [
         type: 'address',
       },
       { indexed: false, internalType: 'uint256', name: '_id', type: 'uint256' },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256',
+      },
     ],
     name: 'ProposalElected',
     type: 'event',
@@ -122,6 +369,12 @@ export const daoABI = [
         indexed: false,
         internalType: 'uint256',
         name: '_proposalid',
+        type: 'uint256',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_tokenId',
         type: 'uint256',
       },
     ],
@@ -185,10 +438,11 @@ export const daoABI = [
     name: 'proposals',
     outputs: [
       { internalType: 'uint256', name: 'id', type: 'uint256' },
+      { internalType: 'uint256', name: 'tokenId', type: 'uint256' },
       { internalType: 'address', name: 'proposer', type: 'address' },
       { internalType: 'address', name: 'receiver', type: 'address' },
       { internalType: 'uint256', name: 'amount', type: 'uint256' },
-      { internalType: 'string', name: 'tokenSelection', type: 'string' },
+      { internalType: 'bool', name: 'tokenSwap', type: 'bool' },
       { internalType: 'string', name: 'description', type: 'string' },
       { internalType: 'uint256', name: 'yesVotes', type: 'uint256' },
       { internalType: 'uint256', name: 'noVotes', type: 'uint256' },
@@ -207,9 +461,8 @@ export const daoABI = [
   {
     inputs: [
       { internalType: 'uint256', name: '_amount', type: 'uint256' },
-      { internalType: 'string', name: '_tokenSelection', type: 'string' },
+      { internalType: 'bool', name: '_tokenSwap', type: 'bool' },
       { internalType: 'string', name: '_ipfsHash', type: 'string' },
-      { internalType: 'address', name: '_customer', type: 'address' },
       { internalType: 'address', name: '_receiver', type: 'address' },
       { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
     ],
@@ -296,6 +549,7 @@ export const daoVaultABI = [
         name: '_aaveLendingPoolAddressesProvider',
         type: 'address',
       },
+      { internalType: 'address', name: '_swapperInterface', type: 'address' },
       {
         internalType: 'address',
         name: '_memberCardInterface',
@@ -329,9 +583,15 @@ export const daoVaultABI = [
       },
       {
         indexed: false,
-        internalType: 'string',
+        internalType: 'bool',
         name: '_tokenPayout',
-        type: 'string',
+        type: 'bool',
+      },
+      {
+        indexed: false,
+        internalType: 'uint256',
+        name: '_tokenId',
+        type: 'uint256',
       },
     ],
     name: 'Benificiaries',
@@ -468,6 +728,19 @@ export const daoVaultABI = [
   },
   {
     inputs: [],
+    name: 'ADDRESSES_PROVIDER',
+    outputs: [
+      {
+        internalType: 'contract IPoolAddressesProvider',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'CORE',
     outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
     stateMutability: 'view',
@@ -489,22 +762,43 @@ export const daoVaultABI = [
   },
   {
     inputs: [],
+    name: 'POOL',
+    outputs: [{ internalType: 'contract IPool', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'aaveAToken',
     outputs: [{ internalType: 'contract IERC20', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'aaveLendingPoolAddressesProvider',
-    outputs: [
+    inputs: [
       {
-        internalType: 'contract IAaveLendingPoolAddressesProvider',
-        name: '',
+        internalType: 'address',
+        name: '_poolContractAddress',
         type: 'address',
       },
     ],
+    name: 'allowanceUSDC',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { internalType: 'uint256', name: '_amount', type: 'uint256' },
+      {
+        internalType: 'address',
+        name: '_poolContractAddress',
+        type: 'address',
+      },
+    ],
+    name: 'approveUSDC',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    stateMutability: 'nonpayable',
     type: 'function',
   },
   {
@@ -520,8 +814,9 @@ export const daoVaultABI = [
     outputs: [
       { internalType: 'address', name: 'receiver', type: 'address' },
       { internalType: 'address', name: 'proposer', type: 'address' },
-      { internalType: 'string', name: 'tokenPayOut', type: 'string' },
+      { internalType: 'bool', name: 'altToken', type: 'bool' },
       { internalType: 'uint256', name: 'amount', type: 'uint256' },
+      { internalType: 'uint256', name: 'tokenId', type: 'uint256' },
     ],
     stateMutability: 'view',
     type: 'function',
@@ -548,14 +843,26 @@ export const daoVaultABI = [
     type: 'function',
   },
   {
-    inputs: [
-      { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
-      { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
-    ],
-    name: 'deposit',
+    inputs: [],
+    name: 'getATokenBalance',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'nonpayable',
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [
+      { internalType: 'address', name: '_tokenAddress', type: 'address' },
+    ],
+    name: 'getBalance',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'getPoolAddress',
+    outputs: [{ internalType: 'address', name: '', type: 'address' }],
+    stateMutability: 'view',
     type: 'function',
   },
   {
@@ -602,10 +909,10 @@ export const daoVaultABI = [
   {
     inputs: [
       { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
+      { internalType: 'bool', name: '_true', type: 'bool' },
     ],
-    name: 'harvestYield',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    name: 'harvestYieldTest',
+    outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
@@ -653,7 +960,8 @@ export const daoVaultABI = [
       { internalType: 'address', name: '_receiver', type: 'address' },
       { internalType: 'address', name: '_proposer', type: 'address' },
       { internalType: 'uint256', name: '_amount', type: 'uint256' },
-      { internalType: 'string', name: '_tokenPayout', type: 'string' },
+      { internalType: 'bool', name: '_altToken', type: 'bool' },
+      { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
     ],
     name: 'setBenificiary',
     outputs: [],
@@ -668,10 +976,7 @@ export const daoVaultABI = [
     type: 'function',
   },
   {
-    inputs: [
-      { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
-    ],
+    inputs: [{ internalType: 'uint256', name: '_amount', type: 'uint256' }],
     name: 'stake',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'nonpayable',
@@ -693,39 +998,26 @@ export const daoVaultABI = [
   },
   {
     inputs: [],
+    name: 'swap',
+    outputs: [{ internalType: 'contract ISwap', name: '', type: 'address' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'token',
     outputs: [{ internalType: 'contract IERC20', name: '', type: 'address' }],
     stateMutability: 'view',
     type: 'function',
   },
   {
-    inputs: [],
-    name: 'underlyingToken',
-    outputs: [{ internalType: 'contract IERC20', name: '', type: 'address' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
-      { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
-    ],
-    name: 'unstake',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
-    ],
+    inputs: [{ internalType: 'uint256', name: '_tokenId', type: 'uint256' }],
     name: 'unstakeFull',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'nonpayable',
     type: 'function',
   },
+  { stateMutability: 'payable', type: 'receive' },
 ]
 
 export const memberCardABI = [
@@ -735,8 +1027,6 @@ export const memberCardABI = [
       { internalType: 'string', name: '_symbol', type: 'string' },
       { internalType: 'string', name: '_initBaseURI', type: 'string' },
       { internalType: 'address', name: '_ownerAddress', type: 'address' },
-      { internalType: 'address', name: '_marketPlace', type: 'address' },
-      { internalType: 'uint96', name: '_royaltyFee', type: 'uint96' },
       { internalType: 'uint256', name: '_maxSupply', type: 'uint256' },
     ],
     stateMutability: 'nonpayable',
@@ -984,7 +1274,10 @@ export const memberCardABI = [
   {
     inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     name: 'cardAtrributes',
-    outputs: [{ internalType: 'uint256', name: 'birthtime', type: 'uint256' }],
+    outputs: [
+      { internalType: 'uint256', name: 'birthtime', type: 'uint256' },
+      { internalType: 'bool', name: 'isTransferable', type: 'bool' },
+    ],
     stateMutability: 'view',
     type: 'function',
   },
@@ -1066,7 +1359,7 @@ export const memberCardABI = [
   {
     inputs: [{ internalType: 'address', name: '_to', type: 'address' }],
     name: 'mint',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
   },
@@ -1105,29 +1398,9 @@ export const memberCardABI = [
     type: 'function',
   },
   {
-    inputs: [
-      { internalType: 'uint256', name: '_tokenId', type: 'uint256' },
-      { internalType: 'uint256', name: '_salePrice', type: 'uint256' },
-    ],
-    name: 'royaltyInfo',
-    outputs: [
-      { internalType: 'address', name: '', type: 'address' },
-      { internalType: 'uint256', name: '', type: 'uint256' },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
     inputs: [],
     name: 's_birthRate',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 's_royaltyFee',
-    outputs: [{ internalType: 'uint96', name: '', type: 'uint96' }],
     stateMutability: 'view',
     type: 'function',
   },
@@ -1186,15 +1459,8 @@ export const memberCardABI = [
     type: 'function',
   },
   {
-    inputs: [{ internalType: 'address', name: '_address', type: 'address' }],
-    name: 'setNonTransferableAddr',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [{ internalType: 'address', name: '_receiver', type: 'address' }],
-    name: 'setRoyaltyReciepient',
+    inputs: [{ internalType: 'uint256', name: '_tokenId', type: 'uint256' }],
+    name: 'setNonTransferableToken',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

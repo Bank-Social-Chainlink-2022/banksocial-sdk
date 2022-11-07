@@ -1,2 +1,7 @@
-export { daoABI, daoVaultABI, memberCardABI } from './abis'
-export { daoAddress, daoVaultAddress, memberCardAddress } from './addresses'
+export { socialBankABI, daoABI, daoVaultABI, memberCardABI } from './abis'
+export {
+  socialBankAddress,
+  daoAddress,
+  daoVaultAddress,
+  memberCardAddress,
+} from './addresses'

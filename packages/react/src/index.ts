@@ -45,6 +45,8 @@ export {
 export {
   deserialize,
   serialize,
+  socialBankABI,
+  socialBankAddress,
   daoABI,
   daoVaultABI,
   memberCardABI,

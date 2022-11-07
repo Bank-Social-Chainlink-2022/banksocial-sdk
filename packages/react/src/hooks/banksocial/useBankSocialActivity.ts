@@ -40,19 +40,4 @@ export function useBankSocialActivity({
   return {
     activities,
   }
-  // return {
-  //   /** SocialBankCore */
-  //   createDAO: () => {},
-  //   joinDAO: () => {},
-  //   depositInDAO: () => {},
-  //   unstakeInDAO: () => {},
-  //   unstakeFullInDAO: () => {},
-  //   propose: () => {},
-  //   vote: () => {},
-  //   daoActivities: daoEvents,
-  //   vaultActivities: {},
-  //   memberActivities: {},
-  //   /** ??? */
-  //   socialBankActivities: {},
-  // }
 }
