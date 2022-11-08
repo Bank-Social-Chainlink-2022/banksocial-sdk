@@ -44,4 +44,4 @@ export {
   useQueryClient,
 } from './utils'
 
-export { useBankSocialActivity } from './banksocial'
+export { useBankSocialActivity, useCreateDAO } from './banksocial'

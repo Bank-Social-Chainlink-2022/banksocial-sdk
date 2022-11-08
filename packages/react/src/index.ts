@@ -40,6 +40,7 @@ export {
   useWaitForTransaction,
   useWebSocketProvider,
   useBankSocialActivity,
+  useCreateDAO,
 } from './hooks'
 
 export {

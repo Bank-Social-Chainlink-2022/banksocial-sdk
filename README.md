@@ -1,4 +1,5 @@
 # SDK
+
 hooks to fetch and interact with bank-social smart contracts
 
 ## Documentation
@@ -15,7 +16,9 @@ npm install wagmi-banksocial ethers
 
 ## Quick Start
 
-### Getting started
+### Get Activites
+
+#### Config
 
 ```jsx
 import { WagmiConfig, createClient } from 'wagmi-banksocial'
@@ -54,24 +57,23 @@ import {
 #### Initiate hook
 
 ```js
-  const API_URL = "Get Mumbai RPC URL from Infura, Alchemy or Quicknode"
-  const { activities } = useBankSocialActivity({
-    API_URL: API_URL,
-    contractAddress: memberCardAddress,
-    contractABI: memberCardABI,
-  })
+const API_URL = 'Get Polygon RPC URL from Infura, Alchemy or Quicknode'
+const { activities } = useBankSocialActivity({
+  API_URL: API_URL,
+  contractAddress: memberCardAddress,
+  contractABI: memberCardABI,
+})
 ```
 
 #### Use
 
 ```jsx
-
-<h2>Vault Activities</h2>;
+;<h2>Vault Activities</h2>
 {
   activities &&
     activities.map((activity, i) => (
       <div key={i}>
-        {activity.eventName === "RoleGranted" && (
+        {activity.eventName === 'RoleGranted' && (
           <div className="text-white">
             <p>Account: {activity.data.account}</p>
             <p>Role: {activity.data.role}</p>
@@ -79,9 +81,22 @@ import {
           </div>
         )}
       </div>
-    ));
+    ))
 }
+```
 
+### Create a DAO
+
+```jsx
+const { write, data } = useCreateDAO({
+  initBaseURI: 'test',
+  maxSupply: 10,
+  minStake: 1,
+  name: 'test',
+})
+
+//...
+return <button onClick={() => write && write()}>create dao</button>
 ```
 
 —

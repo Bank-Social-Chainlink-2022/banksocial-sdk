@@ -1,6 +1,6 @@
 import { ThirdwebSDK } from '@thirdweb-dev/sdk/evm'
 import { ethers } from 'ethers'
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 export type BankSocialArgs = {
   API_URL: string
@@ -16,7 +16,7 @@ export function useBankSocialActivity({
   const [activities, setActivities] = useState([])
   const sdk = useMemo(() => new ThirdwebSDK('mumbai'), [])
 
-  async function getEvents() {
+  const getEvents = useCallback(async () => {
     /** initiate contracts */
     const contract = await sdk.getContract(contractAddress, contractABI)
 
@@ -32,10 +32,10 @@ export function useBankSocialActivity({
     const eventsQuery = await contract.events.getAllEvents(filters)
     console.log('useActivity: eventsQuery', eventsQuery)
     setActivities(eventsQuery)
-  }
+  }, [])
   useEffect(() => {
     getEvents()
-  }, [])
+  }, [getEvents])
 
   return {
     activities,
