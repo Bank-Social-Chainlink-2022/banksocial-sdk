@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.13
+
+### Patch Changes
+
+- add create DAO
+
 ## 0.7.12
 
 ### Patch Changes
