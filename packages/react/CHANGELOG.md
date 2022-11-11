@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.14
+
+### Patch Changes
+
+- add contract calls
+
 ## 0.7.13
 
 ### Patch Changes

@@ -14,7 +14,7 @@ export function useBankSocialActivity({
   contractABI,
 }: BankSocialArgs) {
   const [activities, setActivities] = useState([])
-  const sdk = useMemo(() => new ThirdwebSDK('mumbai'), [])
+  const sdk = useMemo(() => new ThirdwebSDK('polygon'), [])
 
   const getEvents = useCallback(async () => {
     /** initiate contracts */

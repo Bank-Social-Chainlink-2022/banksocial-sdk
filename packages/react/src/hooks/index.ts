@@ -43,5 +43,3 @@ export {
   useMutation,
   useQueryClient,
 } from './utils'
-
-export { useBankSocialActivity, useCreateDAO } from './banksocial'

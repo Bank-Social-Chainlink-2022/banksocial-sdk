@@ -4,6 +4,37 @@ export type { Client, CreateClientConfig } from './client'
 export { Context, WagmiConfig, useClient } from './context'
 export type { WagmiConfigProps } from './context'
 
+/** Bank Social Start */
+export { useBankSocialActivity } from './hooks/banksocial/activities'
+export { useCreateDAO, useDaosById } from './hooks/banksocial/core'
+export { useStake, useUnstake, useHarvest } from './hooks/banksocial/vault'
+export { useUSDCApprove } from './hooks/banksocial/usdc'
+export { useMemberMint } from './hooks/banksocial/member'
+export { usePropose, useVote } from './hooks/banksocial/dao'
+
+export {
+  socialBankABI,
+  daoABI,
+  daoVaultABI,
+  memberCardABI,
+  usdcABI,
+} from './utils/constants/abis'
+export {
+  socialBankAddress,
+  daoAddress,
+  daoVaultAddress,
+  memberCardAddress,
+  mumbaiDaoAdr,
+  mumbaiDaoVaultAdr,
+  mumbaiMemberCardAdr,
+  mumbaiSocialBankAdr,
+  aaveATokenAddress as aaveAToken,
+  poolAddress,
+  uniswapAddress,
+  usdcAddress,
+} from './utils/constants/addresses'
+/** Bank Social End */
+
 export {
   paginatedIndexesConfig,
   useAccount,
@@ -39,22 +70,9 @@ export {
   useTransaction,
   useWaitForTransaction,
   useWebSocketProvider,
-  useBankSocialActivity,
-  useCreateDAO,
 } from './hooks'
 
-export {
-  deserialize,
-  serialize,
-  socialBankABI,
-  socialBankAddress,
-  daoABI,
-  daoVaultABI,
-  memberCardABI,
-  daoAddress,
-  daoVaultAddress,
-  memberCardAddress,
-} from './utils'
+export { deserialize, serialize } from './utils'
 
 export {
   AddChainError,
