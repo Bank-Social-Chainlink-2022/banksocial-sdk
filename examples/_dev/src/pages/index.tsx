@@ -6,7 +6,7 @@ import {
   useBankSocialActivity,
   useCreateDAO,
   useDaosById,
-  useHarvest,
+  // useHarvest, Removed from contract
   useMemberMint,
   usePropose,
   useStake,
@@ -35,22 +35,28 @@ const Page = () => {
     minStake: 1,
     name: 'test',
   })
+
+  /** Start with DAO Vault */
+  const { write: _approveUSDC } = useUSDCApprove({
+    spender: daoVaultAddress,
+    amount: 10,
+  })
   const { write: _stake } = useStake({ amount: 1 })
-  const { write: _unstake } = useUnstake({ tokenId: 0 })
-  const _harvest = useHarvest()
+  // TODO get owner all NFTs ID.
+  const { write: _unstake } = useUnstake({ tokenId: 1 }) // Change tokenId to yours
+  // const _harvest = useHarvest()
+
+  /** The DAO */
   const { write: _propose } = usePropose({
-    amount: 0,
+    amount: 10,
     isToken: false,
     description: 'test',
     receiver: address ? address : '0x123',
-    tokenId: 0,
+    tokenId: 1, // Change tokenId to yours
   })
-  const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 0 })
+  // TODO get all proposals ID.
+  const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 })
   const _mint = useMemberMint()
-  const { write: _approveUSDC } = useUSDCApprove({
-    spender: daoVaultAddress,
-    amount: 1,
-  })
 
   /** Read Contract */
   const { data: daoIds } = useDaosById({ daoId: 1 })
@@ -58,6 +64,10 @@ const Page = () => {
 
   const createDAO = () => {
     _createDAO && _createDAO()
+  }
+
+  const approve = () => {
+    _approveUSDC && _approveUSDC()
   }
 
   const stake = () => {
@@ -68,12 +78,12 @@ const Page = () => {
     _unstake && _unstake()
   }
 
-  const harvest = () => {
-    if (_harvest) {
-      const { write } = _harvest
-      write && write()
-    }
-  }
+  // const harvest = () => {
+  //   if (_harvest) {
+  //     const { write } = _harvest
+  //     write && write()
+  //   }
+  // }
 
   const propose = () => {
     _propose && _propose()
@@ -88,10 +98,6 @@ const Page = () => {
       const { write } = _mint
       write && write()
     }
-  }
-
-  const approve = () => {
-    _approveUSDC && _approveUSDC()
   }
 
   async function log() {
@@ -113,12 +119,12 @@ const Page = () => {
       <button onClick={() => approve()}>Approve</button>
       <button onClick={() => stake()}>Stake</button>
       <button onClick={() => unstake()}>Unstake</button>
-      <button onClick={() => harvest()}>harvest</button>
+      {/* <button onClick={() => harvest()}>harvest</button> */}
       <p>Interact with DAO</p>
       <button onClick={() => propose()}>Propose</button>
       <button onClick={() => vote()}>Vote</button>
       <p>Interact with Member</p>
-      <button onClick={() => mint()}>Mint</button>
+      <button onClick={() => mint()}>Mint (integrated with stake)</button>
     </>
   )
 }

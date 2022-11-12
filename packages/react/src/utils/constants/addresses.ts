@@ -1,12 +1,13 @@
 // polygon mainnet
-export const socialBankAddress = '0x42da2051704c3fa61637a4b80b73ee9be11bdc46'
-export const daoAddress = '0xF8242a819d1481955FEEe1Bf76F0F9E785911D09'
-export const daoVaultAddress = '0xa3989e09582EDA3048CD1372F7fE5Bb97eBc5Bc8'
-export const memberCardAddress = '0xCA5DdbbE67d21b52aA8b50Cd2E46dE246D0B1771'
+export const socialBankAddress = '0x11c1FDF744d54003e41c21D59e8B0D88F135175d'
+export const daoAddress = '0x4c1f1baF25Fbf36Da33dDD236674b9d39B7cE917'
+export const daoVaultAddress = '0x942a5cB67c438926104184F67D2F2c3eb4f4b80d'
+export const memberCardAddress = '0xFCdf2E70F5e476Ff8E566B967948cf5504da40D7'
+
 export const usdcAddress = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
 export const aaveATokenAddress = '0x625E7708f30cA75bfd92586e17077590C60eb4cD'
 export const poolAddress = '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
-export const uniswapAddress = '0xC7cF646eDB2425613624adD90C4fAA1cf86136E1'
+export const swapAddress = '0xb0fed5dFD55533eBeF117B12Aeac2573403c9Ca7'
 
 // mumbai testnet
 export const mumbaiSocialBankAdr = '0xE549D25C8037aad1b3aC32d444eB1a6f82ca9DAB'

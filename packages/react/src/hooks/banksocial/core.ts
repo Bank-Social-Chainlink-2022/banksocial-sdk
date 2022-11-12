@@ -5,7 +5,7 @@ import {
   poolAddress,
   socialBankABI,
   socialBankAddress,
-  uniswapAddress,
+  swapAddress,
   usdcAddress,
 } from '../..'
 import {
@@ -61,7 +61,7 @@ export const useCreateDAO = ({
       usdcAddress,
       aaveAToken,
       poolAddress,
-      uniswapAddress,
+      swapAddress,
       BigNumber.from(maxSupply),
       BigNumber.from(minStake),
     ],

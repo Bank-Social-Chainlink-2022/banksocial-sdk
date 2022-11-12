@@ -20,11 +20,13 @@ export type UnstakeArgs = {
 }
 
 export const useUSDCApprove = ({ spender, amount }: UsdcArgs) => {
+  const amountFormatUSDC = amount * 10 ** 6
+
   const { config, error: prepareError } = usePrepareContractWrite({
     address: usdcAddress,
     abi: usdcABI,
     functionName: 'approve',
-    args: [`0x${spender.slice(2)}`, BigNumber.from(amount)],
+    args: [`0x${spender.slice(2)}`, BigNumber.from(amountFormatUSDC)],
   })
 
   const { write, data, error: writeError, status } = useContractWrite(config)

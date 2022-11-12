@@ -30,7 +30,7 @@ export {
   mumbaiSocialBankAdr,
   aaveATokenAddress as aaveAToken,
   poolAddress,
-  uniswapAddress,
+  swapAddress,
   usdcAddress,
 } from './utils/constants/addresses'
 /** Bank Social End */

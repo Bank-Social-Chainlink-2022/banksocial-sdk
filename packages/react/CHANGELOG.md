@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.15
+
+### Patch Changes
+
+- fixes and examples
+
 ## 0.7.14
 
 ### Patch Changes

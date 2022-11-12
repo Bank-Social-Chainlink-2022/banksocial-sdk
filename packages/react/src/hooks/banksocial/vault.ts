@@ -20,11 +20,14 @@ export type UnstakeArgs = {
 }
 
 export const useStake = ({ amount }: StakeArgs) => {
+  // USDC has 6 decimals
+  const amountFormatUSDC = amount * 10 ** 6
+
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoVaultAddress,
     abi: daoVaultABI,
     functionName: 'stake',
-    args: [BigNumber.from(amount)],
+    args: [BigNumber.from(amountFormatUSDC)],
   })
 
   const { write, data, error: writeError, status } = useContractWrite(config)

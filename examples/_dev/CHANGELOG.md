@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.7
+
+### Patch Changes
+
+- fixes and examples
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.15
+
 ## 0.0.6
 
 ### Patch Changes

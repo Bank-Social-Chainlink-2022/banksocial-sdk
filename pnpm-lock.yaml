@@ -85,7 +85,7 @@ importers:
       react: ^18.1.0
       react-dom: ^18.1.0
       typescript: ^4.7.4
-      wagmi-banksocial: ^0.7.14
+      wagmi-banksocial: ^0.7.15
     dependencies:
       ethers: 5.7.1
       next: 12.3.1_biqbaboplfbrettd7655fr4n2y
