@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.16
+
+### Patch Changes
+
+- allow contract address as input for flexibility, renew addresses, add upkeep and passtime
+
 ## 0.7.15
 
 ### Patch Changes

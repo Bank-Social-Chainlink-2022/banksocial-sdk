@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.8
+
+### Patch Changes
+
+- allow contract address as input for flexibility, renew addresses, add upkeep and passtime
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.16
+
 ## 0.0.7
 
 ### Patch Changes
