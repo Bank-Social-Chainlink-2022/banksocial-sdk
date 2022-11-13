@@ -1,12 +1,12 @@
 import { BigNumber } from 'ethers'
 
 import {
-  aaveAToken,
-  poolAddress,
+  aaveATokenAddress as _aaveAToken,
+  poolAddress as _poolAddress,
+  socialBankAddress as _socialBankAddress,
+  swapAddress as _swapAddress,
+  usdcAddress as _usdcAddress,
   socialBankABI,
-  socialBankAddress,
-  swapAddress,
-  usdcAddress,
 } from '../..'
 import {
   useContractRead,
@@ -23,6 +23,7 @@ export interface ContractReturn {
 
 export type DaosByAddressArgs = {
   daoId: number
+  socialBankAddress?: `0x${string}`
 }
 
 export type CreateDaoArgs = {
@@ -30,11 +31,21 @@ export type CreateDaoArgs = {
   initBaseURI: string
   maxSupply: number
   minStake: number
+  socialBankAddress?: `0x${string}`
+  usdcAddress?: `0x${string}`
+  aaveAToken?: `0x${string}`
+  poolAddress?: `0x${string}`
+  swapAddress?: `0x${string}`
 }
+/*******************************************************
+ * 
+ * Read Contract
+ * 
+/********************************************************/
 
-/** read contract */
 export const useDaosById = ({
   daoId,
+  socialBankAddress = _socialBankAddress,
 }: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
   return useContractRead({
     address: socialBankAddress,
@@ -44,12 +55,37 @@ export const useDaosById = ({
   })
 }
 
-/** write contract */
+/*******************************************************
+ * 
+ * Write Contract
+ * 
+/********************************************************/
+
+/**
+ * @example
+ *
+ *  const { write: _createDAO } = useCreateDAO({
+ *   initBaseURI: 'test',
+ *   maxSupply: 10,
+ *   minStake: 1,
+ *   name: 'test',
+ *   socialBankAddress: socialBankAddress,
+ *   usdcAddress: usdcAddress,
+ *   aaveAToken: aaveAToken,
+ *   poolAddress: poolAddress,
+ *   swapAddress: swapAddress,
+ * })
+ */
 export const useCreateDAO = ({
   name = 'test',
   initBaseURI = 'test',
   maxSupply = 10,
   minStake = 1,
+  socialBankAddress = _socialBankAddress,
+  usdcAddress = _usdcAddress,
+  aaveAToken = _aaveAToken,
+  poolAddress = _poolAddress,
+  swapAddress = _swapAddress,
 }: CreateDaoArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: socialBankAddress,
@@ -70,22 +106,3 @@ export const useCreateDAO = ({
   const { write, data, error: writeError, status } = useContractWrite(config)
   return { write, data, writeError, prepareError, status }
 }
-
-// GetDAObyId
-// GetDAOSbyId
-
-// return {
-//   /** SocialBankCore */
-//   createDAO: () => {},
-//   joinDAO: () => {},
-//   depositInDAO: () => {},
-//   unstakeInDAO: () => {},
-//   unstakeFullInDAO: () => {},
-//   propose: () => {},
-//   vote: () => {},
-//   daoActivities: daoEvents,
-//   vaultActivities: {},
-//   memberActivities: {},
-//   /** ??? */
-//   socialBankActivities: {},
-// }

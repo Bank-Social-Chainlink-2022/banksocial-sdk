@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers'
 
-import { daoABI, daoAddress } from '../..'
+import { daoAddress as _daoAddress, daoABI } from '../..'
 import { useContractWrite, usePrepareContractWrite } from '../contracts'
 
 export interface ContractReturn {
@@ -11,49 +11,77 @@ export interface ContractReturn {
 }
 
 export type ProposeArgs = {
-  amount: number
   isToken: boolean
   description: string
   receiver: `0x${string}`
   tokenId: number
+  daoAddress?: `0x${string}`
 }
 
 export type VoteArgs = {
   vote: boolean
   proposalId: number
   tokenId: number
+  daoAddress?: `0x${string}`
+}
+
+export type NoArgs = {
+  daoAddress?: `0x${string}`
 }
 
 export const usePropose = ({
-  amount,
   isToken,
   description,
   receiver,
   tokenId,
+  daoAddress = _daoAddress,
 }: ProposeArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
     abi: daoABI,
     functionName: 'propose',
-    args: [
-      BigNumber.from(amount),
-      isToken,
-      description,
-      receiver,
-      BigNumber.from(tokenId),
-    ],
+    args: [isToken, description, receiver, BigNumber.from(tokenId)],
   })
 
   const { write, data, error: writeError, status } = useContractWrite(config)
   return { write, data, writeError, prepareError, status }
 }
 
-export const useVote = ({ vote, proposalId, tokenId }: VoteArgs) => {
+export const useVote = ({
+  vote,
+  proposalId,
+  tokenId,
+  daoAddress = _daoAddress,
+}: VoteArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
     abi: daoABI,
     functionName: 'vote',
     args: [vote, BigNumber.from(proposalId), BigNumber.from(tokenId)],
+  })
+
+  const { write, data, error: writeError, status } = useContractWrite(config)
+  return { write, data, writeError, prepareError, status }
+}
+
+export const useManualPerformUpkeep = ({
+  daoAddress = _daoAddress,
+}: NoArgs) => {
+  const { config, error: prepareError } = usePrepareContractWrite({
+    address: daoAddress,
+    abi: daoABI,
+    functionName: 'manualPerformUpkeep',
+  })
+
+  const { write, data, error: writeError, status } = useContractWrite(config)
+  return { write, data, writeError, prepareError, status }
+}
+
+export const usePassTime = ({ daoAddress = _daoAddress }: NoArgs) => {
+  const { config, error: prepareError } = usePrepareContractWrite({
+    address: daoAddress,
+    abi: daoABI,
+    functionName: 'passTime',
   })
 
   const { write, data, error: writeError, status } = useContractWrite(config)

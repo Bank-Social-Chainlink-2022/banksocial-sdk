@@ -1,4 +1,4 @@
-import { memberCardABI, memberCardAddress } from '../..'
+import { memberCardAddress as _memberCardAddress, memberCardABI } from '../..'
 import { useAccount } from '../accounts'
 import { useContractWrite, usePrepareContractWrite } from '../contracts'
 
@@ -9,15 +9,13 @@ export interface ContractReturn {
   write: ReturnType<typeof useContractWrite>['write']
 }
 
-export type StakeArgs = {
-  amount: number
+export type MemberArgs = {
+  memberCardAddress?: `0x${string}`
 }
 
-export type UnstakeArgs = {
-  tokenId: number
-}
-
-export const useMemberMint = () => {
+export const useMemberMint = ({
+  memberCardAddress = _memberCardAddress,
+}: MemberArgs) => {
   const { address } = useAccount()
 
   const { config, error: prepareError } = usePrepareContractWrite({

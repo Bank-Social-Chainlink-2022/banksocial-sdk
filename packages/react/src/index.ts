@@ -7,10 +7,15 @@ export type { WagmiConfigProps } from './context'
 /** Bank Social Start */
 export { useBankSocialActivity } from './hooks/banksocial/activities'
 export { useCreateDAO, useDaosById } from './hooks/banksocial/core'
-export { useStake, useUnstake, useHarvest } from './hooks/banksocial/vault'
+export { useStake, useUnstake } from './hooks/banksocial/vault'
 export { useUSDCApprove } from './hooks/banksocial/usdc'
 export { useMemberMint } from './hooks/banksocial/member'
-export { usePropose, useVote } from './hooks/banksocial/dao'
+export {
+  usePropose,
+  useVote,
+  useManualPerformUpkeep,
+  usePassTime,
+} from './hooks/banksocial/dao'
 
 export {
   socialBankABI,
@@ -24,11 +29,19 @@ export {
   daoAddress,
   daoVaultAddress,
   memberCardAddress,
-  mumbaiDaoAdr,
-  mumbaiDaoVaultAdr,
-  mumbaiMemberCardAdr,
-  mumbaiSocialBankAdr,
-  aaveATokenAddress as aaveAToken,
+  daoGoerli,
+  poolGoerli,
+  swapGoerli,
+  usdcGoerli,
+  daoVaultGoerli,
+  aaveATokenGoerli,
+  memberCardGoerli,
+  socialBankGoerli,
+  daoMumbai,
+  daoVaultMumbai,
+  memberCardMumbai,
+  socialBankMumbai,
+  aaveATokenAddress,
   poolAddress,
   swapAddress,
   usdcAddress,

@@ -1,13 +1,20 @@
 import {
+  aaveATokenAddress,
+  daoAddress,
   daoVaultAddress,
   memberCardABI,
   memberCardAddress,
+  poolAddress,
+  socialBankAddress,
+  swapAddress,
+  usdcAddress,
   useAccount,
   useBankSocialActivity,
   useCreateDAO,
   useDaosById,
-  // useHarvest, Removed from contract
+  useManualPerformUpkeep,
   useMemberMint,
+  usePassTime,
   usePropose,
   useStake,
   useUSDCApprove,
@@ -25,6 +32,7 @@ const Page = () => {
     API_URL,
     contractAddress: memberCardAddress,
     contractABI: memberCardABI,
+    network: 'polygon', // 'goerli'
   })
 
   const { address } = useAccount()
@@ -34,32 +42,44 @@ const Page = () => {
     maxSupply: 10,
     minStake: 1,
     name: 'test',
+    socialBankAddress: socialBankAddress,
+    usdcAddress: usdcAddress,
+    aaveAToken: aaveATokenAddress,
+    poolAddress: poolAddress,
+    swapAddress: swapAddress,
   })
 
   /** Start with DAO Vault */
   const { write: _approveUSDC } = useUSDCApprove({
     spender: daoVaultAddress,
     amount: 10,
+    usdcAddress: usdcAddress,
   })
   const { write: _stake } = useStake({ amount: 1 })
-  // TODO get owner all NFTs ID.
-  const { write: _unstake } = useUnstake({ tokenId: 1 }) // Change tokenId to yours
-  // const _harvest = useHarvest()
+  const { write: _unstake } = useUnstake({ tokenId: 0 }) // Change tokenId to yours
 
   /** The DAO */
   const { write: _propose } = usePropose({
-    amount: 10,
+    // amount: 10, REMOVED
     isToken: false,
     description: 'test',
     receiver: address ? address : '0x123',
-    tokenId: 1, // Change tokenId to yours
+    tokenId: 0, // Change tokenId to yours
+    daoAddress: daoAddress,
   })
-  // TODO get all proposals ID.
   const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 })
-  const _mint = useMemberMint()
+  const { write: _performUpkeep } = useManualPerformUpkeep({
+    daoAddress: daoAddress,
+  })
+  const { write: _passTime } = usePassTime({
+    daoAddress: daoAddress,
+  })
+
+  /** The Member (Not needed right) */
+  const _mint = useMemberMint({})
 
   /** Read Contract */
-  const { data: daoIds } = useDaosById({ daoId: 1 })
+  const { data: daoIds } = useDaosById({ daoId: 0 })
   console.log('🚀 ~ file: index.tsx ~ line 57 ~ Page ~ daoIds', daoIds)
 
   const createDAO = () => {
@@ -78,19 +98,20 @@ const Page = () => {
     _unstake && _unstake()
   }
 
-  // const harvest = () => {
-  //   if (_harvest) {
-  //     const { write } = _harvest
-  //     write && write()
-  //   }
-  // }
-
   const propose = () => {
     _propose && _propose()
   }
 
   const vote = () => {
     _vote && _vote()
+  }
+
+  const performUpkeep = () => {
+    _performUpkeep && _performUpkeep()
+  }
+
+  const passTime = () => {
+    _passTime && _passTime()
   }
 
   const mint = () => {
@@ -119,10 +140,11 @@ const Page = () => {
       <button onClick={() => approve()}>Approve</button>
       <button onClick={() => stake()}>Stake</button>
       <button onClick={() => unstake()}>Unstake</button>
-      {/* <button onClick={() => harvest()}>harvest</button> */}
       <p>Interact with DAO</p>
       <button onClick={() => propose()}>Propose</button>
       <button onClick={() => vote()}>Vote</button>
+      <button onClick={() => performUpkeep()}>Perform Upkeep</button>
+      <button onClick={() => passTime()}>Pass Time</button>
       <p>Interact with Member</p>
       <button onClick={() => mint()}>Mint (integrated with stake)</button>
     </>
@@ -130,3 +152,6 @@ const Page = () => {
 }
 
 export default Page
+
+// Not implemented get owner all NFTs ID.
+// Not implemented get all proposals ID.

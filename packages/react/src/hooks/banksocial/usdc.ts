@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers'
 
-import { usdcABI, usdcAddress } from '../..'
+import { usdcAddress as _usdcAddress, usdcABI } from '../..'
 import { useContractWrite, usePrepareContractWrite } from '../contracts'
 
 export interface ContractReturn {
@@ -13,13 +13,14 @@ export interface ContractReturn {
 export type UsdcArgs = {
   spender: string
   amount: number
+  usdcAddress?: `0x${string}`
 }
 
-export type UnstakeArgs = {
-  tokenId: number
-}
-
-export const useUSDCApprove = ({ spender, amount }: UsdcArgs) => {
+export const useUSDCApprove = ({
+  spender,
+  amount,
+  usdcAddress = _usdcAddress,
+}: UsdcArgs) => {
   const amountFormatUSDC = amount * 10 ** 6
 
   const { config, error: prepareError } = usePrepareContractWrite({

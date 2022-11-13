@@ -474,7 +474,6 @@ export const daoABI = [
   },
   {
     inputs: [
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
       { internalType: 'bool', name: '_tokenSwap', type: 'bool' },
       { internalType: 'string', name: '_ipfsHash', type: 'string' },
       { internalType: 'address', name: '_receiver', type: 'address' },
@@ -788,33 +787,6 @@ export const daoVaultABI = [
     type: 'function',
   },
   {
-    inputs: [
-      {
-        internalType: 'address',
-        name: '_poolContractAddress',
-        type: 'address',
-      },
-    ],
-    name: 'allowanceUSDC',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'uint256', name: '_amount', type: 'uint256' },
-      {
-        internalType: 'address',
-        name: '_poolContractAddress',
-        type: 'address',
-      },
-    ],
-    name: 'approveUSDC',
-    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
     inputs: [],
     name: 'autoPayout',
     outputs: [],
@@ -873,6 +845,13 @@ export const daoVaultABI = [
   },
   {
     inputs: [],
+    name: 'getBenificiaryId',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
     name: 'getPoolAddress',
     outputs: [{ internalType: 'address', name: '', type: 'address' }],
     stateMutability: 'view',
@@ -915,16 +894,6 @@ export const daoVaultABI = [
       { internalType: 'address', name: 'account', type: 'address' },
     ],
     name: 'grantRole',
-    outputs: [],
-    stateMutability: 'nonpayable',
-    type: 'function',
-  },
-  {
-    inputs: [
-      { internalType: 'address', name: '_account', type: 'address' },
-      { internalType: 'bool', name: '_true', type: 'bool' },
-    ],
-    name: 'harvestYieldTest',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -1028,6 +997,13 @@ export const daoVaultABI = [
     name: 'unstakeFull',
     outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
     stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'wasYieldRetreived',
+    outputs: [{ internalType: 'bool', name: '', type: 'bool' }],
+    stateMutability: 'view',
     type: 'function',
   },
   { stateMutability: 'payable', type: 'receive' },
@@ -1396,6 +1372,13 @@ export const memberCardABI = [
       { internalType: 'address', name: 'account', type: 'address' },
     ],
     name: 'renounceRole',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'uint256', name: '_tokenId', type: 'uint256' }],
+    name: 'resetNonTransferableToken',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
