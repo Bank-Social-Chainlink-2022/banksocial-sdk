@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.9
+
+### Patch Changes
+
+- upload ipfs
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.17
+
 ## 0.0.8
 
 ### Patch Changes

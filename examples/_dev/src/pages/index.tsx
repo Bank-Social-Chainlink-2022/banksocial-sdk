@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   aaveATokenAddress,
   daoAddress,
@@ -13,19 +14,25 @@ import {
   useCreateDAO,
   useDaosById,
   useManualPerformUpkeep,
-  useMemberMint,
+  // useMemberMint,
   usePassTime,
   usePropose,
   useStake,
-  useUSDCApprove,
   useUnstake,
+  useUSDCApprove,
   useVote,
 } from 'wagmi-banksocial'
 
 import { Account, Connect, NetworkSwitcher } from '../components'
+import { UploadIPFS } from '../components/UploadToIPFS'
 import { useIsMounted } from '../hooks'
 
 const Page = () => {
+  const [voteInfo, setVoteInfo] = useState({
+    vote: false,
+    proposalId: 0,
+    tokenId: 0,
+  })
   const isMounted = useIsMounted()
   const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
   const { activities } = useBankSocialActivity({
@@ -63,10 +70,14 @@ const Page = () => {
     isToken: false,
     description: 'test',
     receiver: address ? address : '0x123',
-    tokenId: 0, // Change tokenId to yours
+    tokenId: 1, // Change tokenId to yours
     daoAddress: daoAddress,
   })
-  const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 }) // Change tokenId to yours
+  const { write: _vote } = useVote({
+    vote: voteInfo.vote,
+    proposalId: 1,
+    tokenId: 1,
+  }) // Change tokenId to yours
   const { write: _performUpkeep } = useManualPerformUpkeep({
     daoAddress: daoAddress,
   })
@@ -75,7 +86,7 @@ const Page = () => {
   })
 
   /** The Member (Not needed right) */
-  const _mint = useMemberMint({})
+  // const _mint = useMemberMint({})
 
   /** Read Contract */
   const { data: daoIds } = useDaosById({ daoId: 0 })
@@ -105,6 +116,11 @@ const Page = () => {
     _vote && _vote()
   }
 
+  const yesVote = () => {
+    setVoteInfo({ vote: true, proposalId: 0, tokenId: 0 }) // Change tokenId to yours
+    vote()
+  }
+
   const performUpkeep = () => {
     _performUpkeep && _performUpkeep()
   }
@@ -113,12 +129,12 @@ const Page = () => {
     _passTime && _passTime()
   }
 
-  const mint = () => {
-    if (_mint) {
-      const { write } = _mint
-      write && write()
-    }
-  }
+  // const mint = () => {
+  //   if (_mint) {
+  //     const { write } = _mint
+  //     write && write()
+  //   }
+  // }
 
   async function log() {
     console.log('daoActivities', activities)
@@ -142,10 +158,10 @@ const Page = () => {
       <p>Interact with DAO</p>
       <button onClick={() => propose()}>Propose</button>
       <button onClick={() => vote()}>Vote</button>
+      <button onClick={() => yesVote()}>Yes Vote</button>
       <button onClick={() => performUpkeep()}>Perform Upkeep</button>
       <button onClick={() => passTime()}>Pass Time</button>
-      <p>Interact with Member</p>
-      <button onClick={() => mint()}>Mint (integrated with stake)</button>
+      <UploadIPFS></UploadIPFS>
     </>
   )
 }

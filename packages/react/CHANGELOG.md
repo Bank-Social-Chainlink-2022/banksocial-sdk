@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.17
+
+### Patch Changes
+
+- upload ipfs
+
 ## 0.7.16
 
 ### Patch Changes
