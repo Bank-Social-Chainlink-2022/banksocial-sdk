@@ -16,6 +16,15 @@ export type UsdcArgs = {
   usdcAddress?: `0x${string}`
 }
 
+/**
+ * @example
+ *
+ * const { write: _approveUSDC } = useUSDCApprove({
+ *   spender: daoVaultAddress,
+ *   amount: 10,
+ *   usdcAddress: usdcAddress,
+ * })
+ */
 export const useUSDCApprove = ({
   spender,
   amount,

@@ -20,6 +20,11 @@ export type UnstakeArgs = {
   daoVaultAddress?: `0x${string}`
 }
 
+/**
+ * @example
+ *
+ * const { write: _stake } = useStake({ amount: 1 })
+ */
 export const useStake = ({
   amount,
   daoVaultAddress = _daoVaultAddress,
@@ -38,6 +43,11 @@ export const useStake = ({
   return { write, data, writeError, prepareError, status }
 }
 
+/**
+ * @example
+ *
+ * const { write: _unstake } = useUnstake({ tokenId: 0 }) // Change tokenId to yours
+ */
 export const useUnstake = ({
   tokenId,
   daoVaultAddress = _daoVaultAddress,

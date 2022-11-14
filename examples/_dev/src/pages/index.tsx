@@ -60,14 +60,13 @@ const Page = () => {
 
   /** The DAO */
   const { write: _propose } = usePropose({
-    // amount: 10, REMOVED
     isToken: false,
     description: 'test',
     receiver: address ? address : '0x123',
     tokenId: 0, // Change tokenId to yours
     daoAddress: daoAddress,
   })
-  const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 })
+  const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 }) // Change tokenId to yours
   const { write: _performUpkeep } = useManualPerformUpkeep({
     daoAddress: daoAddress,
   })

@@ -13,6 +13,11 @@ export type MemberArgs = {
   memberCardAddress?: `0x${string}`
 }
 
+/**
+ * @example
+ *
+ * const _mint = useMemberMint({})
+ */
 export const useMemberMint = ({
   memberCardAddress = _memberCardAddress,
 }: MemberArgs) => {

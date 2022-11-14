@@ -87,6 +87,9 @@ export const useCreateDAO = ({
   poolAddress = _poolAddress,
   swapAddress = _swapAddress,
 }: CreateDaoArgs) => {
+  const maxSupplyFormatUSDC = maxSupply * 10 ** 6
+  const minStakeFormatUSDC = minStake * 10 ** 6
+
   const { config, error: prepareError } = usePrepareContractWrite({
     address: socialBankAddress,
     abi: socialBankABI,
@@ -98,8 +101,8 @@ export const useCreateDAO = ({
       aaveAToken,
       poolAddress,
       swapAddress,
-      BigNumber.from(maxSupply),
-      BigNumber.from(minStake),
+      BigNumber.from(maxSupplyFormatUSDC),
+      BigNumber.from(minStakeFormatUSDC),
     ],
   })
 

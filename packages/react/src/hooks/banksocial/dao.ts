@@ -29,6 +29,17 @@ export type NoArgs = {
   daoAddress?: `0x${string}`
 }
 
+/**
+ * @example
+ *
+ * const { write: _propose } = usePropose({
+ *   isToken: false,
+ *   description: 'test',
+ *   receiver: address ? address : '0x123',
+ *   tokenId: 0, // Change tokenId to yours
+ *   daoAddress: daoAddress,
+ * })
+ */
 export const usePropose = ({
   isToken,
   description,
@@ -47,6 +58,11 @@ export const usePropose = ({
   return { write, data, writeError, prepareError, status }
 }
 
+/**
+ * @example
+ *
+ * const { write: _vote } = useVote({ vote: true, proposalId: 0, tokenId: 1 }) // Change tokenId to yours
+ */
 export const useVote = ({
   vote,
   proposalId,
@@ -64,6 +80,13 @@ export const useVote = ({
   return { write, data, writeError, prepareError, status }
 }
 
+/**
+ * @example
+ *
+ * const { write: _performUpkeep } = useManualPerformUpkeep({
+ *   daoAddress: daoAddress,
+ * })
+ */
 export const useManualPerformUpkeep = ({
   daoAddress = _daoAddress,
 }: NoArgs) => {
@@ -77,6 +100,13 @@ export const useManualPerformUpkeep = ({
   return { write, data, writeError, prepareError, status }
 }
 
+/**
+ * @example
+ *
+ * const { write: _passTime } = usePassTime({
+ *   daoAddress: daoAddress,
+ * })
+ */
 export const usePassTime = ({ daoAddress = _daoAddress }: NoArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
