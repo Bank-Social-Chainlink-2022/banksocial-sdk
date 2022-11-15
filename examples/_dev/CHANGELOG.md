@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.11
+
+### Patch Changes
+
+- update usdc contract
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.19
+
 ## 0.0.10
 
 ### Patch Changes

@@ -1,7 +1,11 @@
 import { BigNumber } from 'ethers'
 
 import { usdcAddress as _usdcAddress, usdcABI } from '../..'
-import { useContractWrite, usePrepareContractWrite } from '../contracts'
+import {
+  useContractRead,
+  useContractWrite,
+  usePrepareContractWrite,
+} from '../contracts'
 
 export interface ContractReturn {
   data: import('@wagmi/core').SendTransactionResult | undefined
@@ -10,11 +14,38 @@ export interface ContractReturn {
   write: ReturnType<typeof useContractWrite>['write']
 }
 
+export type AllowanceUsdcArgs = {
+  owner: `0x${string}`
+  spender: `0x${string}`
+  usdcAddress?: `0x${string}`
+}
+
 export type UsdcArgs = {
   spender: string
   amount: number
   usdcAddress?: `0x${string}`
 }
+
+/*******************************************************
+ * Read Contract
+/********************************************************/
+
+export const useUSDCAllowance = ({
+  owner,
+  spender,
+  usdcAddress = _usdcAddress,
+}: AllowanceUsdcArgs): ReturnType<typeof useContractRead> => {
+  return useContractRead({
+    address: usdcAddress,
+    abi: usdcABI,
+    functionName: 'allowance',
+    args: [owner, spender],
+  })
+}
+
+/*******************************************************
+ * Write Contract
+/********************************************************/
 
 /**
  * @example

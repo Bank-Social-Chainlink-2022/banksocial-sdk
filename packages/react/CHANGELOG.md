@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.19
+
+### Patch Changes
+
+- update usdc contract
+
 ## 0.7.18
 
 ### Patch Changes

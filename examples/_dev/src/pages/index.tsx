@@ -21,6 +21,7 @@ import {
   useUnstake,
   useUSDCApprove,
   useVote,
+  useUSDCAllowance,
 } from 'wagmi-banksocial'
 
 import { Account, Connect, NetworkSwitcher } from '../components'
@@ -56,12 +57,19 @@ const Page = () => {
     swapAddress: swapAddress,
   })
 
-  /** Start with DAO Vault */
+  /** USDC contract */
   const { write: _approveUSDC } = useUSDCApprove({
     spender: daoVaultAddress,
     amount: 10,
     usdcAddress: usdcAddress,
   })
+  const { data: allowance } = useUSDCAllowance({
+    owner: address || '0x123',
+    spender: daoVaultAddress,
+  })
+
+  /** Start with DAO Vault */
+  console.log('🚀 ~ file: index.tsx ~ line 67 ~ Page ~ allowance', allowance)
   const { write: _stake } = useStake({ amount: 1 })
   const { write: _unstake } = useUnstake({ tokenId: 0 }) // Change tokenId to yours
 

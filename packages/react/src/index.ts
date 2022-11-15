@@ -9,7 +9,7 @@ export { useBankSocialActivity } from './hooks/banksocial/activities'
 export { useUploadIPFS } from './hooks/banksocial/upload'
 export { useCreateDAO, useDaosById } from './hooks/banksocial/core'
 export { useStake, useUnstake } from './hooks/banksocial/vault'
-export { useUSDCApprove } from './hooks/banksocial/usdc'
+export { useUSDCApprove, useUSDCAllowance } from './hooks/banksocial/usdc'
 export { useMemberMint } from './hooks/banksocial/member'
 export {
   usePropose,
