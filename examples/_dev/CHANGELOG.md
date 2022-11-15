@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.10
+
+### Patch Changes
+
+- get metadata
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.18
+
 ## 0.0.9
 
 ### Patch Changes

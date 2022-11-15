@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.18
+
+### Patch Changes
+
+- get metadata
+
 ## 0.7.17
 
 ### Patch Changes
