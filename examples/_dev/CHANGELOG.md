@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.12
+
+### Patch Changes
+
+- update abis
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.21
+
 ## 0.0.11
 
 ### Patch Changes

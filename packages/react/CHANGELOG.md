@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.21
+
+### Patch Changes
+
+- update abis
+
 ## 0.7.20
 
 ### Patch Changes

@@ -74,8 +74,14 @@ const Page = () => {
     '🚀 ~ file: index.tsx ~ line 67 ~ Page ~ allowance',
     ethers.utils.formatUnits(allowance as BigNumberish, 6),
   )
-  const { write: _stake } = useStake({ amount: 1 })
-  const { write: _unstake } = useUnstake({ tokenId: 0 }) // Change tokenId to yours
+  const { write: _stake } = useStake({
+    amount: 1,
+    daoVaultAddress: daoVaultAddress,
+  })
+  const { write: _unstake } = useUnstake({
+    tokenId: 0,
+    daoVaultAddress: daoVaultAddress,
+  }) // Change tokenId to yours
 
   /** The DAO */
   const { write: _propose } = usePropose({
@@ -88,8 +94,10 @@ const Page = () => {
   const { write: _vote } = useVote({
     vote: voteInfo.vote,
     proposalId: 1,
-    tokenId: 1,
-  }) // Change tokenId to yours
+    tokenId: 1, // Change tokenId to yours
+    daoAddress: daoAddress,
+  })
+
   const { write: _performUpkeep } = useManualPerformUpkeep({
     daoAddress: daoAddress,
   })
@@ -101,7 +109,10 @@ const Page = () => {
   // const _mint = useMemberMint({})
 
   /** Read Contract */
-  const { data: daoIds } = useDaosById({ daoId: 0 })
+  const { data: daoIds } = useDaosById({
+    daoId: 0,
+    socialBankAddress: socialBankAddress,
+  })
   console.log('🚀 ~ file: index.tsx ~ line 57 ~ Page ~ daoIds', daoIds)
 
   const createDAO = () => {
