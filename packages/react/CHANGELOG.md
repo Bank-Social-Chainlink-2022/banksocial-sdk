@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.20
+
+### Patch Changes
+
+- update addresses
+
 ## 0.7.19
 
 ### Patch Changes
