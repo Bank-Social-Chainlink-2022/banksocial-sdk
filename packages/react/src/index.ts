@@ -7,7 +7,12 @@ export type { WagmiConfigProps } from './context'
 /** Bank Social Start */
 export { useBankSocialActivity } from './hooks/banksocial/activities'
 export { useUploadIPFS } from './hooks/banksocial/upload'
-export { useCreateDAO, useDaosById } from './hooks/banksocial/core'
+export {
+  useCreateDAO,
+  useDaosById,
+  useDAOAddress,
+  useVaultAddress,
+} from './hooks/banksocial/core'
 export { useStake, useUnstake } from './hooks/banksocial/vault'
 export { useUSDCApprove, useUSDCAllowance } from './hooks/banksocial/usdc'
 export { useMemberMint } from './hooks/banksocial/member'

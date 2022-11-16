@@ -1,9 +1,8 @@
-import { BigNumberish, ethers } from 'ethers'
 import { useState } from 'react'
 import {
   aaveATokenAddress,
   daoAddress,
-  daoVaultAddress,
+  // daoVaultAddress,
   memberCardABI,
   memberCardAddress,
   poolAddress,
@@ -13,6 +12,7 @@ import {
   useAccount,
   useBankSocialActivity,
   useCreateDAO,
+  useDAOAddress,
   useDaosById,
   useManualPerformUpkeep,
   // useMemberMint,
@@ -20,14 +20,17 @@ import {
   usePropose,
   useStake,
   useUnstake,
-  useUSDCApprove,
-  useVote,
   useUSDCAllowance,
+  useUSDCApprove,
+  useVaultAddress,
+  useVote,
 } from 'wagmi-banksocial'
 
 import { Account, Connect, NetworkSwitcher } from '../components'
 import { UploadIPFS } from '../components/UploadToIPFS'
 import { useIsMounted } from '../hooks'
+
+const daoVaultAddress = '0x8D85FD61b8A06E4996D4D47D9654006d734b023b'
 
 const Page = () => {
   const [voteInfo, setVoteInfo] = useState({
@@ -46,6 +49,7 @@ const Page = () => {
 
   const { address } = useAccount()
 
+  /** social bank core */
   const { write: _createDAO } = useCreateDAO({
     initBaseURI: 'test',
     maxSupply: 10,
@@ -58,6 +62,16 @@ const Page = () => {
     swapAddress: swapAddress,
   })
 
+  const { data: deployedVaultAddress } = useVaultAddress({
+    daoId: 0,
+  })
+  console.log('deployedVaultAddress : ', deployedVaultAddress)
+
+  const { data: deployedDaoAddress } = useDAOAddress({
+    daoId: 0,
+  })
+  console.log('deployedDaoAddress : ', deployedDaoAddress)
+
   /** USDC contract */
   const { write: _approveUSDC } = useUSDCApprove({
     spender: daoVaultAddress,
@@ -68,12 +82,10 @@ const Page = () => {
     owner: address || '0x123',
     spender: daoVaultAddress,
   })
+  console.log('🚀 ~ file: index.tsx ~ line 85 ~ Page ~ allowance', allowance)
 
-  /** Start with DAO Vault */
-  console.log(
-    '🚀 ~ file: index.tsx ~ line 67 ~ Page ~ allowance',
-    ethers.utils.formatUnits(allowance as BigNumberish, 6),
-  )
+  /** Start with Vault */
+
   const { write: _stake } = useStake({
     amount: 1,
     daoVaultAddress: daoVaultAddress,

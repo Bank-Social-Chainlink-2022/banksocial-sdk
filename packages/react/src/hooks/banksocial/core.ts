@@ -41,6 +41,30 @@ export type CreateDaoArgs = {
  * Read Contract
 /********************************************************/
 
+export const useVaultAddress = ({
+  daoId,
+  socialBankAddress = _socialBankAddress,
+}: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
+  return useContractRead({
+    address: socialBankAddress,
+    abi: socialBankABI,
+    functionName: 'getVaultById',
+    args: [BigNumber.from(daoId)],
+  })
+}
+
+export const useDAOAddress = ({
+  daoId,
+  socialBankAddress = _socialBankAddress,
+}: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
+  return useContractRead({
+    address: socialBankAddress,
+    abi: socialBankABI,
+    functionName: 'getDAOById',
+    args: [BigNumber.from(daoId)],
+  })
+}
+
 export const useDaosById = ({
   daoId,
   socialBankAddress = _socialBankAddress,

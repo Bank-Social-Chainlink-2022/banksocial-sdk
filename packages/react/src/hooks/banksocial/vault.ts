@@ -62,18 +62,3 @@ export const useUnstake = ({
   const { write, data, error: writeError, status } = useContractWrite(config)
   return { write, data, writeError, prepareError, status }
 }
-
-// DEPRECATED
-// export const useHarvest = () => {
-//   const { address } = useAccount()
-
-//   const { config, error: prepareError } = usePrepareContractWrite({
-//     address: daoVaultAddress,
-//     abi: daoVaultABI,
-//     functionName: 'harvestYieldTest',
-//     args: [address || '0x', true], // ...
-//   })
-
-//   const { write, data, error: writeError, status } = useContractWrite(config)
-//   return { write, data, writeError, prepareError, status }
-// }

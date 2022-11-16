@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.22
+
+### Patch Changes
+
+- get vault and dao address
+
 ## 0.7.21
 
 ### Patch Changes

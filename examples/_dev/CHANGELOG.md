@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.13
+
+### Patch Changes
+
+- get vault and dao address
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.22
+
 ## 0.0.12
 
 ### Patch Changes
