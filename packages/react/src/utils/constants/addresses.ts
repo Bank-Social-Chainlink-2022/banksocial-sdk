@@ -1,13 +1,13 @@
 // polygon mainnet
-export const socialBankAddress = '0x4c7A4a07FE11A5a3f246Ba3Eff88B983C460ba90'
-export const daoAddress = '0xb796a42a4290b0f9a29418d33B8bFd4124499015'
-export const daoVaultAddress = '0xb3CCed8BCFdEd17d5f3C1709E808cAb42D92bc8b'
-export const memberCardAddress = '0xbe645cd966A8C07797878AF9859C0EA90EBC5d94'
+export const socialBankAddress = '0xbb3a26E187C06C5495d59853476207bEf0765CA6'
+export const daoAddress = '0x84275ff4eEe34Cf50D5D0D1C966cBA0bd0d38941'
+export const daoVaultAddress = '0xF73e8B74A88B554e8879D0A754838EC2b2b763eA'
+export const memberCardAddress = '0xe05D9ae23e3BD841FFCD93c7b276b9a77d576cC8'
 
 export const usdcAddress = '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'
 export const aaveATokenAddress = '0x625E7708f30cA75bfd92586e17077590C60eb4cD'
 export const poolAddress = '0xa97684ead0e402dC232d5A977953DF7ECBaB3CDb'
-export const swapAddress = '0xb947B9A2340BD7bb3a95063C7B785A48fDb1d4eA'
+export const swapAddress = '0xE13A82931934d69f44Cc093BD23d4010505Fc57a'
 
 // goerli testnet
 export const socialBankGoerli = '0xD37da9f196E2828B43048206529726e2723C5acA'

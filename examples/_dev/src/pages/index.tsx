@@ -1,3 +1,4 @@
+import { BigNumberish, ethers } from 'ethers'
 import { useState } from 'react'
 import {
   aaveATokenAddress,
@@ -69,7 +70,10 @@ const Page = () => {
   })
 
   /** Start with DAO Vault */
-  console.log('🚀 ~ file: index.tsx ~ line 67 ~ Page ~ allowance', allowance)
+  console.log(
+    '🚀 ~ file: index.tsx ~ line 67 ~ Page ~ allowance',
+    ethers.utils.formatUnits(allowance as BigNumberish, 6),
+  )
   const { write: _stake } = useStake({ amount: 1 })
   const { write: _unstake } = useUnstake({ tokenId: 0 }) // Change tokenId to yours
 
