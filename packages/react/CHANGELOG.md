@@ -1,11 +1,5 @@
 # wagmi
 
-## 0.7.23
-
-### Patch Changes
-
-- abi in args
-
 ## 0.7.22
 
 ### Patch Changes
