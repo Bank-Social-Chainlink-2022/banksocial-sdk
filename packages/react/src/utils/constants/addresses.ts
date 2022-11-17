@@ -1,5 +1,5 @@
 // polygon mainnet
-export const socialBankAddress = '0x0383E59d8433FACa37f3D947A002a731088Cb31a'
+export const socialBankAddress = '0xbb3a26E187C06C5495d59853476207bEf0765CA6'
 export const daoAddress = '0x28a27083Fa6d2957012227b3d7843249F0F8cA67'
 export const daoVaultAddress = '0x3C07be21ae0cb8a6dd60298b822E06C8C4db5360'
 export const memberCardAddress = '0x0eDb0716F38B8Ff059b7939008E4D592494a7E70'
