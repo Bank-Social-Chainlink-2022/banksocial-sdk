@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {
   aaveATokenAddress,
   daoAddress,
-  // daoVaultAddress,
   memberCardABI,
   memberCardAddress,
   poolAddress,
@@ -15,13 +14,12 @@ import {
   useDAOAddress,
   useDaosById,
   useManualPerformUpkeep,
-  // useMemberMint,
   usePassTime,
   usePropose,
   useStake,
-  useUnstake,
   useUSDCAllowance,
   useUSDCApprove,
+  useUnstake,
   useVaultAddress,
   useVote,
 } from 'wagmi-banksocial'

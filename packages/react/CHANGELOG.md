@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.26
+
+### Patch Changes
+
+- fix slice
+
 ## 0.7.25
 
 ### Patch Changes

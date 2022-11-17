@@ -21,7 +21,7 @@ export type AllowanceUsdcArgs = {
 }
 
 export type UsdcArgs = {
-  spender: string
+  spender: `0x${string}`
   amount: number
   usdcAddress?: `0x${string}`
 }
@@ -67,7 +67,7 @@ export const useUSDCApprove = ({
     address: usdcAddress,
     abi: usdcABI,
     functionName: 'approve',
-    args: [`0x${spender.slice(2)}`, BigNumber.from(amountFormatUSDC)],
+    args: [spender, BigNumber.from(amountFormatUSDC)],
   })
 
   const { write, data, error: writeError, status } = useContractWrite(config)
