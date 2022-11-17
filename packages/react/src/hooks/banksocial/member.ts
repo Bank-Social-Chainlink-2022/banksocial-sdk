@@ -1,3 +1,5 @@
+import { Abi, Narrow } from 'abitype'
+
 import { memberCardAddress as _memberCardAddress, memberCardABI } from '../..'
 import { useAccount } from '../accounts'
 import { useContractWrite, usePrepareContractWrite } from '../contracts'
@@ -11,6 +13,7 @@ export interface ContractReturn {
 
 export type MemberArgs = {
   memberCardAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 /**
@@ -20,12 +23,13 @@ export type MemberArgs = {
  */
 export const useMemberMint = ({
   memberCardAddress = _memberCardAddress,
+  abi = memberCardABI,
 }: MemberArgs) => {
   const { address } = useAccount()
 
   const { config, error: prepareError } = usePrepareContractWrite({
     address: memberCardAddress,
-    abi: memberCardABI,
+    abi,
     functionName: 'mint',
     args: [address || '0x'], //...
   })

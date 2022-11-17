@@ -1,12 +1,13 @@
+import { Abi, Narrow } from 'abitype'
 import { BigNumber } from 'ethers'
 
 import {
   aaveATokenAddress as _aaveAToken,
   poolAddress as _poolAddress,
+  socialBankABI as _socialBankABI,
   socialBankAddress as _socialBankAddress,
   swapAddress as _swapAddress,
   usdcAddress as _usdcAddress,
-  socialBankABI,
 } from '../..'
 import {
   useContractRead,
@@ -24,6 +25,7 @@ export interface ContractReturn {
 export type DaosByAddressArgs = {
   daoId: number
   socialBankAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 export type CreateDaoArgs = {
@@ -36,6 +38,7 @@ export type CreateDaoArgs = {
   aaveAToken?: `0x${string}`
   poolAddress?: `0x${string}`
   swapAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 /*******************************************************
  * Read Contract
@@ -44,10 +47,11 @@ export type CreateDaoArgs = {
 export const useVaultAddress = ({
   daoId,
   socialBankAddress = _socialBankAddress,
+  abi = _socialBankABI,
 }: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
   return useContractRead({
     address: socialBankAddress,
-    abi: socialBankABI,
+    abi,
     functionName: 'getVaultById',
     args: [BigNumber.from(daoId)],
   })
@@ -56,10 +60,11 @@ export const useVaultAddress = ({
 export const useDAOAddress = ({
   daoId,
   socialBankAddress = _socialBankAddress,
+  abi = _socialBankABI,
 }: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
   return useContractRead({
     address: socialBankAddress,
-    abi: socialBankABI,
+    abi,
     functionName: 'getDAOById',
     args: [BigNumber.from(daoId)],
   })
@@ -68,10 +73,11 @@ export const useDAOAddress = ({
 export const useDaosById = ({
   daoId,
   socialBankAddress = _socialBankAddress,
+  abi = _socialBankABI,
 }: DaosByAddressArgs): ReturnType<typeof useContractRead> => {
   return useContractRead({
     address: socialBankAddress,
-    abi: socialBankABI,
+    abi,
     functionName: 'getDAOsById',
     args: [BigNumber.from(daoId)],
   })
@@ -106,13 +112,14 @@ export const useCreateDAO = ({
   aaveAToken = _aaveAToken,
   poolAddress = _poolAddress,
   swapAddress = _swapAddress,
+  abi = _socialBankABI,
 }: CreateDaoArgs) => {
   const maxSupplyFormatUSDC = maxSupply * 10 ** 6
   const minStakeFormatUSDC = minStake * 10 ** 6
 
   const { config, error: prepareError } = usePrepareContractWrite({
     address: socialBankAddress,
-    abi: socialBankABI,
+    abi,
     functionName: 'createDAO',
     args: [
       name,

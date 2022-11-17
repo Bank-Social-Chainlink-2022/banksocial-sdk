@@ -1,3 +1,4 @@
+import { Abi, Narrow } from 'abitype'
 import { BigNumber } from 'ethers'
 
 import { daoVaultAddress as _daoVaultAddress, daoVaultABI } from '../..'
@@ -13,11 +14,13 @@ export interface ContractReturn {
 export type StakeArgs = {
   amount: number
   daoVaultAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 export type UnstakeArgs = {
   tokenId: number
   daoVaultAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 /**
@@ -28,13 +31,14 @@ export type UnstakeArgs = {
 export const useStake = ({
   amount,
   daoVaultAddress = _daoVaultAddress,
+  abi = daoVaultABI,
 }: StakeArgs) => {
   // USDC has 6 decimals
   const amountFormatUSDC = amount * 10 ** 6
 
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoVaultAddress,
-    abi: daoVaultABI,
+    abi,
     functionName: 'stake',
     args: [BigNumber.from(amountFormatUSDC)],
   })
@@ -51,10 +55,11 @@ export const useStake = ({
 export const useUnstake = ({
   tokenId,
   daoVaultAddress = _daoVaultAddress,
+  abi = daoVaultABI,
 }: UnstakeArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoVaultAddress,
-    abi: daoVaultABI,
+    abi,
     functionName: 'unstakeFull',
     args: [BigNumber.from(tokenId)],
   })

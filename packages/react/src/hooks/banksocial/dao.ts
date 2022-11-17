@@ -1,3 +1,4 @@
+import { Abi, Narrow } from 'abitype'
 import { BigNumber } from 'ethers'
 
 import { daoAddress as _daoAddress, daoABI } from '../..'
@@ -16,6 +17,7 @@ export type ProposeArgs = {
   receiver: `0x${string}`
   tokenId: number
   daoAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 export type VoteArgs = {
@@ -23,10 +25,12 @@ export type VoteArgs = {
   proposalId: number
   tokenId: number
   daoAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 export type NoArgs = {
   daoAddress?: `0x${string}`
+  abi?: Narrow<Abi | readonly []>
 }
 
 /**
@@ -46,10 +50,11 @@ export const usePropose = ({
   receiver,
   tokenId,
   daoAddress = _daoAddress,
+  abi = daoABI,
 }: ProposeArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
-    abi: daoABI,
+    abi,
     functionName: 'propose',
     args: [isToken, description, receiver, BigNumber.from(tokenId)],
   })
@@ -68,10 +73,11 @@ export const useVote = ({
   proposalId,
   tokenId,
   daoAddress = _daoAddress,
+  abi = daoABI,
 }: VoteArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
-    abi: daoABI,
+    abi,
     functionName: 'vote',
     args: [vote, BigNumber.from(proposalId), BigNumber.from(tokenId)],
   })
@@ -89,10 +95,11 @@ export const useVote = ({
  */
 export const useManualPerformUpkeep = ({
   daoAddress = _daoAddress,
+  abi = daoABI,
 }: NoArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
-    abi: daoABI,
+    abi,
     functionName: 'manualPerformUpkeep',
   })
 
@@ -107,10 +114,13 @@ export const useManualPerformUpkeep = ({
  *   daoAddress: daoAddress,
  * })
  */
-export const usePassTime = ({ daoAddress = _daoAddress }: NoArgs) => {
+export const usePassTime = ({
+  daoAddress = _daoAddress,
+  abi = daoABI,
+}: NoArgs) => {
   const { config, error: prepareError } = usePrepareContractWrite({
     address: daoAddress,
-    abi: daoABI,
+    abi,
     functionName: 'passTime',
   })
 
