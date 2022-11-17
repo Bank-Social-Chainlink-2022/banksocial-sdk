@@ -1,5 +1,11 @@
 # wagmi
 
+## 0.7.25
+
+### Patch Changes
+
+- change back address
+
 ## 0.7.24
 
 ### Patch Changes

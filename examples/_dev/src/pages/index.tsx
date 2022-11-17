@@ -64,11 +64,13 @@ const Page = () => {
 
   const { data: deployedVaultAddress } = useVaultAddress({
     daoId: 0,
+    socialBankAddress: socialBankAddress,
   })
   console.log('deployedVaultAddress : ', deployedVaultAddress)
 
   const { data: deployedDaoAddress } = useDAOAddress({
     daoId: 0,
+    socialBankAddress: socialBankAddress,
   })
   console.log('deployedDaoAddress : ', deployedDaoAddress)
 

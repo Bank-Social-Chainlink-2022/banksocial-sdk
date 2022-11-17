@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.14
+
+### Patch Changes
+
+- change back address
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.25
+
 ## 0.0.13
 
 ### Patch Changes
