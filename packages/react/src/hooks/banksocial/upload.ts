@@ -47,7 +47,11 @@ export function useUploadIPFS({ network = 'polygon' }: BankSocialArgs) {
       image: image,
     }
 
-    const uri = await sdk.storage.upload(metadata)
+    // Get base URI for tokenURI to add ipfs:XXX/[tokenId]
+    const jsonUri = await sdk.storage.upload(metadata)
+    const uri = jsonUri
+      .replace('ipfs://', 'https://gateway.ipfscdn.io/ipfs/')
+      .replace('/0', '/')
     return uri
   }
 

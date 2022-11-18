@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {
   aaveATokenAddress,
-  daoAddress,
+  // daoAddress,
   memberCardABI,
   memberCardAddress,
   poolAddress,
@@ -28,7 +28,8 @@ import { Account, Connect, NetworkSwitcher } from '../components'
 import { UploadIPFS } from '../components/UploadToIPFS'
 import { useIsMounted } from '../hooks'
 
-const daoVaultAddress = '0x8D85FD61b8A06E4996D4D47D9654006d734b023b'
+const daoVaultAddress = '0xd496F1ba28e8987400da49ACAF5893fd1e36b211'
+const daoAddress = '0xD8453901298557BfaaC07F259343e295F7221783'
 
 const Page = () => {
   const [voteInfo, setVoteInfo] = useState({
@@ -49,10 +50,11 @@ const Page = () => {
 
   /** social bank core */
   const { write: _createDAO } = useCreateDAO({
-    initBaseURI: 'test',
+    initBaseURI:
+      'https://gateway.ipfscdn.io/ipfs/QmWdECjgH7bTgQJuYH3o32dnCVenAvygzZ8rHHZnPMFg7N/',
     maxSupply: 10,
     minStake: 1,
-    name: 'test',
+    name: 'City DAO',
     socialBankAddress: socialBankAddress,
     usdcAddress: usdcAddress,
     aaveAToken: aaveATokenAddress,
@@ -61,13 +63,13 @@ const Page = () => {
   })
 
   const { data: deployedVaultAddress } = useVaultAddress({
-    daoId: 0,
+    daoId: 7,
     socialBankAddress: socialBankAddress,
   })
   console.log('deployedVaultAddress : ', deployedVaultAddress)
 
   const { data: deployedDaoAddress } = useDAOAddress({
-    daoId: 0,
+    daoId: 7,
     socialBankAddress: socialBankAddress,
   })
   console.log('deployedDaoAddress : ', deployedDaoAddress)

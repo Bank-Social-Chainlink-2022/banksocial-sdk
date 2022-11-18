@@ -1,5 +1,14 @@
 # example-dev
 
+## 0.0.16
+
+### Patch Changes
+
+- fix uri
+
+- Updated dependencies []:
+  - wagmi-banksocial@0.7.27
+
 ## 0.0.15
 
 ### Patch Changes

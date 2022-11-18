@@ -2,7 +2,7 @@
   "name": "wagmi-banksocial",
   "description": "React Hooks for Ethereum",
   "license": "MIT",
-  "version": "0.7.26",
+  "version": "0.7.27",
   "repository": {
     "type": "git",
     "url": "https://github.com/wagmi-dev/wagmi.git",
